@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        #ascii-header {
+            font-size: 24px;
+            background: linear-gradient(90deg, violet, indigo, blue, green, yellow, orange, red, violet);
+            background-size: 800% 800%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradientAnimation 10s linear infinite;
+            white-space: pre;
+            display: inline-block;
+        }
+
+        .nav-buttons {
+            margin-top: 0px;
+            margin-bottom: 20px;
+        }
+
+        .nav-buttons a {
+            color: darkred;
+            background-color: #333;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .nav-buttons a:hover {
+            background-color: darkred;
+            color: white;
+        }
+
+        .text-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #222;
+            border: 1px solid #555;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        @keyframes gradientAnimation {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <pre id="ascii-header">               
+________   __  .__                  
+\_____  \_/  |_|  |__   ___________ 
+ /   |   \   __\  |  \_/ __ \_  __ \
+/    |    \  | |   Y  \  ___/|  | \/
+\_______  /__| |___|  /\___  >__|   
+        \/          \/     \/       
+</pre>
+</header>
+
+<div class="nav-buttons">
+    <a href="games.html">Games</a>
+    <a href="index.html">Home</a>
+    <a href="bookmarklets.html">Bookmarklets</a>
+</div>
+
+<div class="text-container">
+    <p>if yall wanna hmu my snap @domino.dp and my discord is @.overlook</p>
+</div>
+
+</body>
+</html>

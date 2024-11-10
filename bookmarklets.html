@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        /* ASCII Art Header Styling */
+        header {
+            margin-bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #ascii-header {
+            font-size: 24px;
+            background: linear-gradient(90deg, violet, indigo, blue, green, yellow, orange, red, violet);
+            background-size: 800% 800%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradientAnimation 10s linear infinite;
+            white-space: pre;
+            display: inline-block;
+        }
+
+        /* Navigation Buttons Styling */
+        .nav-buttons {
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        .nav-buttons a {
+            color: darkred;
+            background-color: #333;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .nav-buttons a:hover {
+            background-color: darkred;
+            color: white;
+        }
+
+        /* Bookmarklet Container and Boxes */
+        .bookmarklet-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .bookmarklet-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #222;
+            border: 1px solid #555;
+            border-radius: 10px;
+            padding: 10px;
+            width: 112.5px;
+            height: 112.5px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 14px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .bookmarklet-box:hover {
+            background-color: #333;
+        }
+
+        .bookmarklet-box a {
+            color: #4CAF50;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Gradient Animation */
+        @keyframes gradientAnimation {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <pre id="ascii-header" aria-label="ASCII Art Header">               
+__________               __                         __   .__          __          
+\______   \ ____   ____ |  | __ _____ _____ _______|  | _|  |   _____/  |_  ______
+ |    |  _//  _ \ /  _ \|  |/ //     \\__  \\_  __ \  |/ /  | _/ __ \   __\/  ___/
+ |    |   (  <_> |  <_> )    <|  Y Y  \/ __ \|  | \/    <|  |_\  ___/|  |  \___ \ 
+ |______  /\____/ \____/|__|_ \__|_|  (____  /__|  |__|_ \____/\___  >__| /____  >
+        \/                   \/     \/     \/           \/         \/          \/ 
+    </pre>
+</header>
+
+<!-- Navigation Buttons -->
+<div class="nav-buttons" role="navigation">
+    <a href="games.html" aria-label="Go to Games Page">Games</a>
+    <a href="index.html" aria-label="Go to Home Page">Home</a>
+    <a href="other.html" aria-label="Go to Other Page">Other</a>
+</div>
+
+<div class="bookmarklet-container">
+    
+    <div class="bookmarklet-box">
+        <a href="javascript:(function(x,y){if(!window.click){window.click=!0,document.body.style.cursor='crosshair';var cps=prompt('Autoclicker CPS: (Under 200 recommended)');if(!cps||isNaN(cps)?(alert(%27You entered something wrong. Try running the script again.%27),end()):alert(%27Autoclicker activated at %27+cps+%27 CPS! Do [ctrl+e] to stop.%27),addEventListener(%27mousemove%27,e=>{x=e.clientX,y=e.clientY}),addEventListener(%27keydown%27,e=>{%27e%27===e.key&&e.ctrlKey&&(alert(%27Autoclicker deactivated! Click the bookmark again to reactivate!%27),end())}),window.click)var int=setInterval(function(){var e=document.elementFromPoint(x,y);e&&e.click()},1e3/cps);function end(){clearInterval(int),window.click=!1,document.body.style.cursor=%27default%27}}})();">autoclicker</a>
+    </div>
+    
+    <div class="bookmarklet-box">
+        <a href="javascript:(function() {    var w = 600, h = 400;    var left = (screen.width / 2) - (w / 2);    var top = (screen.height / 2) - (h / 2);    window.open(window.location.href, 'miniModal', 'width=' + w + ',height=' + h + ',top=' + top + ',left=' + left + ',toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no');})();">minify</a>
+    </div>
+    
+    <div class="bookmarklet-box">
+        <a href="code">temp</a>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        header {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            overflow: hidden;
+            z-index: 1; /* Ensures header is above the stars */
+        }
+
+        #ascii-header {
+            font-size: 24px;
+            background: linear-gradient(90deg, violet, indigo, blue, green, yellow, orange, red, violet);
+            background-size: 800% 800%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradientAnimation 10s linear infinite;
+            white-space: pre; /* Preserve ASCII formatting */
+            display: inline-block; /* Center the ASCII art */
+        }
+
+        .nav-buttons {
+            margin-top: 20px;
+            z-index: 1; /* Ensures buttons are above the stars */
+        }
+
+        .nav-buttons a {
+            color: darkred;
+            background-color: #333;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .nav-buttons a:hover {
+            background-color: darkred;
+            color: white;
+        }
+
+        .star-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            animation: twinkle 5s infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="star-container" id="star-container"></div>
+
+<header>
+    <pre id="ascii-header">
+               _                                    
+              u                                     
+             88Nu.   u.     uL   ..    .d``         
+    .u@u    '88888.o888c  .@88b  @88R  @8Ne.   .u   
+ .zWF8888bx  ^8888  8888 '"Y888k/"*P   %8888:u@88N  
+.888  9888    8888  8888    Y888L       `888I  888. 
+I888  9888    8888  8888     8888        888I  888I 
+I888  9888    8888  8888     `888N       888I  888I 
+I888  9888   .8888b.888P  .u./"888&    uW888L  888' 
+`888Nx?888    ^Y8888*""  d888" Y888*" '*88888Nu88P  
+ "88" '888      `Y"      ` "Y   Y"    ~ '88888F`    
+       88E                               888 ^      
+       98>                               *8E        
+       '8                                '8>        
+        `                                 "         
+    </pre>
+</header>
+
+<div class="nav-buttons">
+    <a href="games.html">Games</a>
+    <a href="bookmarklets.html">Bookmarklets</a>
+    <a href="other.html">Other</a>
+</div>
+
+<script>
+    // Star background script
+    function createStar() {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 3 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        document.getElementById('star-container').appendChild(star);
+        return star;
+    }
+
+    const stars = [];
+    const velocities = [];
+    for (let i = 0; i < 100; i++) {
+        stars.push(createStar());
+        velocities.push({ x: (Math.random() - 0.5) * 2, y: (Math.random() - 0.5) * 2 });
+    }
+
+    let velocityX = 0;
+    let velocityY = 0;
+    let lastMouseX = 0;
+    let lastMouseY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        velocityX = e.clientX - lastMouseX;
+        velocityY = e.clientY - lastMouseY;
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+    });
+
+    function moveStars() {
+        stars.forEach((star, index) => {
+            const rect = star.getBoundingClientRect();
+            let top = rect.top + velocities[index].y + velocityY * 0.05;
+            let left = rect.left + velocities[index].x + velocityX * 0.05;
+
+            if (top < 0) top = window.innerHeight;
+            if (top > window.innerHeight) top = 0;
+            if (left < 0) left = window.innerWidth;
+            if (left > window.innerWidth) left = 0;
+
+            star.style.top = `${top}px`;
+            star.style.left = `${left}px`;
+        });
+
+        requestAnimationFrame(moveStars);
+    }
+
+    moveStars();
+</script>
+
+<!-- Including tabspoof.js -->
+<script src="tabspoof.js"></script>
+
+</body>
+</html>

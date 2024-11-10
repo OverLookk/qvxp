@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .search-bar {
+            text-align: center;
+            margin: 10px;
+            position: relative;
+        }
+
+        input[type="text"] {
+            padding: 9px; 
+            width: 500px; 
+            border: none;
+            border-radius: 4px;
+            margin-right: 5px;
+            background-color: #333;
+            color: white;
+            transition: border 0.3s;
+            font-size: 16px; 
+        }
+
+        .game-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .game-container:hover {
+            transform: scale(1.05);
+        }
+
+        .game-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .game-title {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: white;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay for text visibility */
+            padding: 10px 0;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center; 
+            gap: 10px; 
+            margin-top: -20px;
+            margin-bottom: 20px;
+        }
+
+        .nav-buttons a {
+            color: darkred;
+            background-color: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .nav-buttons a:hover {
+            background-color: darkred;
+            color: white;
+        }
+
+        @keyframes gradientAnimation {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        #ascii-container {
+            text-align: center; 
+            margin: 20px 0;
+        }
+
+        #ascii-header {
+            font-size: 24px;
+            background: linear-gradient(90deg, violet, indigo, blue, green, yellow, orange, red, violet);
+            background-size: 800% 800%;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradientAnimation 10s linear infinite;
+            white-space: pre; 
+            display: inline-block; 
+        }
+    </style>
+</head>
+<body>
+  
+<header>
+    <div id="ascii-container">
+        <pre id="ascii-header">
+  ________                                
+ /  _____/_____    _____   ____   ______  
+/   \  ___\__  \  /     \_/ __ \ /  ___/  
+\    \_\  \/ __ \|  Y Y  \  ___/ \___ \   
+ \______  (____  /__|_|  /\___  >____  >  
+        \/     \/      \/     \/     \/   </pre>
+    </div>
+
+    <div class="nav-buttons">
+        <a href="bookmarklets.html">Bookmarklets</a>
+        <a href="index.html">Home</a>
+        <a href="other.html">Other</a>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" placeholder="Search..." oninput="filterGames(this.value)">
+    </div>
+</header>
+
+<main>
+    <div class="game-container" onclick="openGame('game-pages/bloonstd5.html')">
+        <div class="game-icon">
+            <img src="images/bloonstd5.png" alt="Game Icon">
+        </div>
+        <div class="game-title">Bloons TD 5</div>
+    </div>
+
+
+
+    <div class="game-container" onclick="openGame('game-pages/diggy.html')">
+        <div class="game-icon">
+            <img src="images/diggy.png" alt="Game Icon">
+        </div>
+        <div class="game-title">Diggy</div>
+    </div>
+
+
+
+    <div class="game-container" onclick="openGame('game-pages/factoryballs4.html')">
+        <div class="game-icon">
+            <img src="images/factoryballs4.png" alt="Game Icon">
+        </div>
+        <div class="game-title">Factory  Balls 4</div>
+    </div>
+
+
+
+    <div class="game-container" onclick="openGame('game-pages/earntodie2.html')">
+        <div class="game-icon">
+            <img src="images/earntodie2.png" alt="Game Icon">
+        </div>
+        <div class="game-title">Earn to Die 2</div>
+    </div>
+
+
+
+    <div class="game-container" onclick="openGame('game-pages/happywheels.html')">
+        <div class="game-icon">
+            <img src="images/happywheels.png" alt="Game Icon">
+        </div>
+        <div class="game-title">Happy Wheels</div>
+    </div>
+
+
+
+    <div class="game-container" onclick="openGame('game-pages/sugarsugar.html')">
+        <div class="game-icon">
+            <img src="images/sugarsugar.png" alt="Game Icon">
+        </div>
+        <div class="game-title">Sugar Sugar</div>
+    </div>
+
+
+
+    <div class="game-container" onclick="openGame('game-pages/fancypantsadventure.html')">
+        <div class="game-icon">
+            <img src="images/fancypantsadventure.png" alt="Game Icon">
+        </div>
+        <div class="game-title">Fancy Pants</div>
+    </div>
+
+
+
+    <div class="game-container" onclick="openGame('game-pages/raftwars.html')">
+        <div class="game-icon">
+            <img src="images/raftwars.png" alt="Game Icon">
+        </div>
+        <div class="game-title">raftwars</div>
+    </div>
+    
+    
+    
+    <div class="game-container" onclick="openGame('game-pages/raftwars2.html')">
+        <div class="game-icon">
+            <img src="images/raftwars2.png" alt="Game Icon">
+        </div>
+        <div class="game-title">raftwars2</div>
+    </div>
+    
+    
+    
+    <div class="game-container" onclick="openGame('game-pages/run2.html')">
+        <div class="game-icon">
+            <img src="images/run2.png" alt="Game Icon">
+        </div>
+        <div class="game-title">run2</div>
+    </div>
+    
+    
+    
+    <div class="game-container" onclick="openGame('game-pages/run3.html')">
+        <div class="game-icon">
+            <img src="images/run3.png" alt="Game Icon">
+        </div>
+        <div class="game-title">run3</div>
+    </div>
+    
+    
+    
+    <div class="game-container" onclick="openGame('game-pages/sugarsugar2.html')">
+        <div class="game-icon">
+            <img src="images/sugarsugar2.png" alt="Game Icon">
+        </div>
+        <div class="game-title">sugarsugar2</div>
+    </div>
+    
+    
+    
+    <div class="game-container" onclick="openGame('game-pages/sugarsugar3.html')">
+        <div class="game-icon">
+            <img src="images/sugarsugar3.png" alt="Game Icon">
+        </div>
+        <div class="game-title">sugarsugar3</div>
+    </div>
+    
+    
+    
+    <div class="game-container" onclick="openGame('game-pages/bloonstd4.html')">
+        <div class="game-icon">
+            <img src="images/bloonstd4.png" alt="Game Icon">
+        </div>
+        <div class="game-title">bloonstd4</div>
+    </div>
+    
+    
+</main>
+
+<script>
+    function filterGames(searchTerm) {
+        const gameContainers = document.querySelectorAll('.game-container');
+        searchTerm = searchTerm.toLowerCase();
+
+        gameContainers.forEach(container => {
+            const title = container.querySelector('.game-title').textContent.toLowerCase();
+
+            if (title.includes(searchTerm)) {
+                container.style.display = 'block';
+            } else {
+                container.style.display = 'none';
+            }
+        });
+    }
+
+    function openGame(url) {
+        window.location.href = url;
+    }
+</script>
+
+<script src="tabspoof.js"></script>
+
+</body>
+</html>
